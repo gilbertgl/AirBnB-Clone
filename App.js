@@ -3,6 +3,7 @@ import { SafeAreaView, StatusBar } from "react-native";
 
 import HomeScreen from "./screens/home";
 import SearchResultsScreen from "./screens/searchResults";
+import DestinationSearchScreen from "./screens/destinationSearch";
 
 import Post from "./components/post";
 
@@ -18,7 +19,8 @@ export default function App() {
       <SafeAreaView>
         {/* <HomeScreen/> */}
         {/* <Post post={post1} /> */}
-        <SearchResultsScreen/>
+        {/* <SearchResultsScreen/> */}
+        <DestinationSearchScreen/>
       </SafeAreaView>
     </>
   );
