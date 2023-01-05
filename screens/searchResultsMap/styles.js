@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  corousel: {
+    position: "absolute",
+    bottom: 60,
+  }
 });
 
 export default styles;

@@ -4,6 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 import { PROVIDER_GOOGLE } from "react-native-maps/lib/ProviderConstants";
 
 import CustomMarker from "../../components/customMarker";
+import PostCarouselItem from "../../components/postCarouselItem";
 
 import styles from "./styles";
 import places from "../../assets/data/feed";
@@ -32,6 +33,9 @@ const SearchResultsMap = (props) => {
           />
         ))}
       </MapView>
+      <View style={styles.corousel}>
+          <PostCarouselItem post={places[0]}/>
+      </View>
     </View>
   );
 };
