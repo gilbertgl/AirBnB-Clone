@@ -13,7 +13,6 @@ const DestinationSearchScreen = (props) => {
       <GooglePlacesAutocomplete
         placeholder="Where are you going?"
         onPress={(data, details = null) => {
-          console.warn(data, details);
           navigation.navigate("Guests");
         }}
         styles={{

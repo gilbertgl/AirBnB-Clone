@@ -7,6 +7,7 @@ import Feather from "react-native-vector-icons/Feather";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import HomeScreen from "../screens/home";
 import ExploreNavigator from "./exploreNavigator";
+import SearchResultsMap from "../screens/searchResultsMap";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +20,8 @@ const HomeTabNavigator = (props) => {
     >
       <Tab.Screen
         name={"Explore"}
-        component={ExploreNavigator}
+        // component={ExploreNavigator}
+        component={SearchResultsMap}
         options={{
           tabBarIcon: ({ color }) => (
             <Fontisto name="search" size={25} color={color} />
