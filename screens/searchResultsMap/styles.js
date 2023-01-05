@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
   },
   corousel: {
     position: "absolute",
-    bottom: 60,
+    bottom: 5,
+    height: 150,
   }
 });
 
