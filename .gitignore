@@ -9,6 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+assets/data/GilbertoM_accessKeys.csv
 
 # macOS
 .DS_Store
