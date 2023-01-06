@@ -7,7 +7,7 @@ import DetailedPost from "../../components/detailedPost";
 import places from "../../assets/data/feed";
 
 
-const AcomodationDetailsScreen = () => {
+const AcomodationDetailsScreen = (props) => {
     const route = useRoute();
     const post = places.find(place => place.id == route.params.postId);
 

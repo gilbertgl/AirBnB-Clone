@@ -10,12 +10,16 @@ import PostCarouselItem from "../../components/postCarouselItem";
 import styles from "./styles";
 
 const SearchResultsMap = (props) => {
+  const { guests } = props;
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
   const [posts, setPosts] = useState([]);
   const width = useWindowDimensions().width;
   const flatList = useRef();
   const map = useRef();
-  const viewConfig = useRef({ itemVisiblePercentThreshold: 70, minimumViewTime: 100 });
+  const viewConfig = useRef({
+    itemVisiblePercentThreshold: 70,
+    minimumViewTime: 100,
+  });
   const onViewChanged = useRef(({ viewableItems }) => {
     if (viewableItems.length > 0) {
       const selectedPlace = viewableItems[0].item;
@@ -26,10 +30,17 @@ const SearchResultsMap = (props) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postResullts = await API.graphql(graphqlOperation(listPosts));
+        const postResullts = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          })
+        );
         setPosts(postResullts.data.listPosts.items);
-      } 
-      catch (error) {
+      } catch (error) {
         console.log(error);
       }
     };
@@ -69,7 +80,10 @@ const SearchResultsMap = (props) => {
         {posts.map((place) => (
           <CustomMarker
             isSelected={place.id === selectedPlaceId}
-            coordinate={{ latitude: place.latitude, longitude: place.longitude}}
+            coordinate={{
+              latitude: place.latitude,
+              longitude: place.longitude,
+            }}
             price={place.newPrice}
             onPress={() => setSelectedPlaceId(place.id)}
           />
