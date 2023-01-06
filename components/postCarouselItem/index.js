@@ -1,13 +1,18 @@
 import React from "react";
-import { View, Image, Text, useWindowDimensions } from "react-native";
+import { View, Image, Text, useWindowDimensions, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
 
 const PostCarouselItem = (props) => {
   const post = props.post;
+  const navigation = useNavigation();
+  const goToDetailedScreen = () => {
+    navigation.navigate("AccommodationDetails", {postId: post.id});
+  };
   const width = useWindowDimensions().width;
   return (
-    <View style={[styles.container, {width: width - 30}]}>
+    <Pressable onPress={goToDetailedScreen} style={[styles.container, {width: width - 30}]}>
       <View style={styles.innerContainer}>
         <Image
           style={styles.image}
@@ -27,7 +32,7 @@ const PostCarouselItem = (props) => {
           </Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
