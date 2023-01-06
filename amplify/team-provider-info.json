@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "airbnbclone3c1b42cf": {}
+      },
+      "api": {
+        "airbnbclone": {}
       }
     }
   }

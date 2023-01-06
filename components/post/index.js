@@ -4,6 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
 
+const days = 7;
+
 const Post = (props) => {
   const post = props.post;
   const navigation = useNavigation();
@@ -30,7 +32,7 @@ const Post = (props) => {
         <Text style={styles.oldPrice}>${post.oldPrice}</Text>
         <Text style={styles.newPrice}> ${post.newPrice} </Text>/ night
       </Text>
-      <Text style={styles.totalPrice}>${post.totalPrice} Total</Text>
+      <Text style={styles.totalPrice}>${post.newPrice * days} Total</Text>
     </Pressable>
   );
 };
