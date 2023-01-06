@@ -8,7 +8,7 @@ import feed from "../../assets/data/feed";
 const SearchResultsScreen = () => {
   return (
     <View>
-      <FlatList data={feed} renderItem={({item}) => <Post post={item}/>} />
+      <FlatList data={feed} showsVerticalScrollIndicator={false} renderItem={({item}) => <Post post={item}/>} />
     </View>
   );
 };
