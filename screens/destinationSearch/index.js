@@ -13,7 +13,7 @@ const DestinationSearchScreen = (props) => {
       <GooglePlacesAutocomplete
         placeholder="Where are you going?"
         onPress={(data, details = null) => {
-          navigation.navigate("Guests");
+          navigation.navigate("Guests", { viewport: details.geometry.viewport });
         }}
         styles={{
           textInput: styles.textInput,
@@ -21,7 +21,6 @@ const DestinationSearchScreen = (props) => {
         query={{
           key: "AIzaSyDykPBEkn7ZM5c5CJsdnc1P3vokOIH778Q",
           language: "en",
-          type: "(cities)",
         }}
         fetchDetails
         suppressDefaultStyles

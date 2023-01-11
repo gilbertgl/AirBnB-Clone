@@ -2,17 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { View, Text, FlatList, useWindowDimensions } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { PROVIDER_GOOGLE } from "react-native-maps/lib/ProviderConstants";
-import { API, graphqlOperation } from "aws-amplify";
-import { listPosts } from "../../src/graphql/queries";
 
 import CustomMarker from "../../components/customMarker";
 import PostCarouselItem from "../../components/postCarouselItem";
 import styles from "./styles";
 
 const SearchResultsMap = (props) => {
-  const { guests } = props;
+  const { posts } = props;
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
-  const [posts, setPosts] = useState([]);
   const width = useWindowDimensions().width;
   const flatList = useRef();
   const map = useRef();
@@ -28,27 +25,6 @@ const SearchResultsMap = (props) => {
   });
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postResullts = await API.graphql(
-          graphqlOperation(listPosts, {
-            filter: {
-              maxGuests: {
-                ge: guests,
-              },
-            },
-          })
-        );
-        setPosts(postResullts.data.listPosts.items);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  useEffect(() => {
     if (selectedPlaceId || selectedPlaceId) {
       const index = posts.findIndex((place) => place.id === selectedPlaceId);
       flatList.current.scrollToIndex({ index });
@@ -57,8 +33,8 @@ const SearchResultsMap = (props) => {
       const region = {
         latitude: selectedPlace.latitude,
         longitude: selectedPlace.longitude,
-        latitudeDelta: 0.8,
-        longitudeDelta: 0.8,
+        latitudeDelta: 0.03,
+        longitudeDelta: 0.03,
       };
       map.current.animateToRegion(region);
     }
@@ -79,6 +55,7 @@ const SearchResultsMap = (props) => {
       >
         {posts.map((place) => (
           <CustomMarker
+            key={place.id}
             isSelected={place.id === selectedPlaceId}
             coordinate={{
               latitude: place.latitude,
