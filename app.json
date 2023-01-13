@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/95cc68c0-bfe1-4629-9317-bd4686c59394"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -24,10 +25,24 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.imperadordogado.AirBnB",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDykPBEkn7ZM5c5CJsdnc1P3vokOIH778Q"
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "95cc68c0-bfe1-4629-9317-bd4686c59394"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
